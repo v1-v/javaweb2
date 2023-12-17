@@ -8,7 +8,7 @@
 <body>
 
 <h2>上传题目</h2>
-//把题目上传到数据库
+//把题目提交到uploadQuestion
 <form action="uploadQuestion">
     问题：<input type="text" name="questionText" required><br>
     选项A：<input type="text" name="optionA" required><br>

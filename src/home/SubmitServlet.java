@@ -22,10 +22,10 @@ public class SubmitServlet extends HttpServlet {
 
         // 计算得分
         int totalQuestions = questions.size();//题目数量
-        int correctAnswers = 0;
+        int correctAnswers = 0;//题目正确数量
         for (Question question : questions) {
             String answer = request.getParameter("answer"+ question.getId());
-
+            //答案不为空且答案与数据库中的正确答案一致则加一分
             if (answer!=null&&answer.equals(question.getCorrectAnswer())) {
                 correctAnswers++;
             }
@@ -34,13 +34,10 @@ public class SubmitServlet extends HttpServlet {
 
         float score = ((float) correctAnswers / totalQuestions) * 100;
 
-        // 获取用户名字（这里假设用户名字存储在会话中，实际中可能需要从登录信息中获取）
         String username = (String) request.getSession().getAttribute("username");
-        // 保存得分到数据库
+        // 保存分数到数据库
         saveScoreToDatabase(username,score);
-
-        // 将得分设置为请求属性，以便在结果页面显示
-        //request.setAttribute("score", score);
+        // 提交后回到登录界面
         response.sendRedirect("/denglu.jsp");
 
     }
@@ -49,7 +46,7 @@ public class SubmitServlet extends HttpServlet {
         try {
 
             try (Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=sa3;user=v2;password=123456;encrypt=false")) {
-                // 插入得分记录
+                // 插入到数据库找到该username的得分记录
                 String query = "INSERT INTO user_scores (user_id, score) VALUES (?, ?)";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -59,7 +56,7 @@ public class SubmitServlet extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();//输出错误信息
         }
     }
 

@@ -17,7 +17,7 @@ public class DeleteQuestionServlet extends HttpServlet {
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=sa3;user=v2;password=123456;encrypt=false");
-
+            //找到题目id并在数据库中找到该题目，然后删除该题目
             String query = "DELETE FROM exam_questions WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, questionId);
