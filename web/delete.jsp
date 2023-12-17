@@ -11,7 +11,7 @@
 <body>
 
 <h2>删除题目</h2>
-
+//删除出错的题目
 <form action="/deleteQuestion">
     <%ExamQuestion examQuestion = new ExamQuestion();
         List<Question> questions = examQuestion.getQuestions();%>

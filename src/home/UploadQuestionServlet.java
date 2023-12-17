@@ -19,7 +19,7 @@ public class UploadQuestionServlet extends HttpServlet {
         String optionB = request.getParameter("optionB");
         String optionC = request.getParameter("optionC");
         String correctAnswer = request.getParameter("correctAnswer");
-
+//储存到数据库
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=sa3;user=v2;password=123456;encrypt=false");
 

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "deleteQuestion", urlPatterns = "/deleteQuestion")
 public class DeleteQuestionServlet extends HttpServlet {
-
+//删除题目
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String questionId = request.getParameter("questionId");
 

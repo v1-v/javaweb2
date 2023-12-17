@@ -7,7 +7,7 @@
 <body>
 
 <h2>老师仪表板</h2>
-
+//显示老师登录成功面板
 <div>
     <a href="uploadQuestion.jsp">上传题目</a>
     <a href="delete.jsp">删除题目</a>

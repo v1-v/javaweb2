@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "submit", urlPatterns = "/submit")
 public class SubmitServlet extends HttpServlet {
-
+    //计算总分
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 获取问题列表
